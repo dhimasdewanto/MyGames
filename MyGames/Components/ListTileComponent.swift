@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 /// Component tile for [GameItem].
 struct ListTileComponent: View {
@@ -18,9 +19,10 @@ struct ListTileComponent: View {
             ZStack(
                 alignment: .bottomLeading
             ) {
-                NetworkImage(
-                    urlAddress: game.imageLocation
+                WebImage(
+                    url: URL(string: game.imageLocation)
                 )
+                .resizable()
                 .scaledToFill()
                 .frame(
                     width: 120,

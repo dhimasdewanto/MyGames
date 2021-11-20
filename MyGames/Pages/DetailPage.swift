@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 /// Page to show detail game.
 struct DetailPage: View {
@@ -59,9 +60,10 @@ struct DetailPage: View {
                 let detail = gameDetail!
                 ScrollView {
                     VStack {
-                        NetworkImage(
-                            urlAddress: detail.imageLocation
+                        WebImage(
+                            url: URL(string: detail.imageLocation)
                         )
+                        .resizable()
                         .scaledToFit()
 
                         Text(detail.name)
