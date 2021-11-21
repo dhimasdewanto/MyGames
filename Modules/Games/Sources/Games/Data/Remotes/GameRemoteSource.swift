@@ -10,7 +10,7 @@ import Combine
 import Foundation
     
 public class GameRemoteSource: RemoteDataSource {
-    public typealias Request = GameRequest
+    public typealias Request = GameDataRequest
     public typealias Response = GameItemResponse
     
     public func execute(request: Request?) -> AnyPublisher<Response, Error> {

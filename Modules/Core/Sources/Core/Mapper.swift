@@ -8,11 +8,14 @@
 import Foundation
 
 public protocol Mapper {
-    associatedtype Response
-    associatedtype Entity
-    associatedtype Domain
+    associatedtype RequestData
+    associatedtype RequestDomain
+    associatedtype ResponseData
+    associatedtype ResponseDomain
     
-    func transformResponseToEntity(response: Response) -> Entity
-    func transformEntityToDomain(entity: Entity) -> Domain
+    func requestToData(_ request: RequestDomain?) -> RequestData?
+    func requestToDomain(_ request: RequestData?) -> RequestDomain?
+    func responseToData(_ response: ResponseDomain) -> ResponseData
+    func responseToDomain(_ response: ResponseData) -> ResponseDomain
 }
 

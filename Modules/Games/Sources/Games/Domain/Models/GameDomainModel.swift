@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GameItemEntity {
+public struct GameDomainModel {
     var gameId: String
     var name: String
     var imageLocation: String
