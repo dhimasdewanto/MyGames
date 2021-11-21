@@ -40,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E945ED68274A2538006C438B /* Core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Core; path = ../Modules/Core; sourceTree = "<group>"; };
 		E9E322A12749556D009CCC10 /* MyGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E322A42749556D009CCC10 /* MyGamesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGamesApp.swift; sourceTree = "<group>"; };
 		E9E322A62749556D009CCC10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 		E9E322982749556D009CCC10 = {
 			isa = PBXGroup;
 			children = (
+				E945ED68274A2538006C438B /* Core */,
 				E9E322A32749556D009CCC10 /* MyGames */,
 				E9E322A22749556D009CCC10 /* Products */,
 			);
