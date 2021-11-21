@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-public protocol DataSource {
+public protocol RemoteDataSource {
     associatedtype Request
     associatedtype Response
     

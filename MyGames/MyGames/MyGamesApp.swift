@@ -2,7 +2,7 @@
 //  MyGamesApp.swift
 //  MyGames
 //
-//  Created by TMLI IT Dev on 20/11/21.
+//  Created by Dhimas Dewanto on 20/11/21.
 //
 
 import SwiftUI
