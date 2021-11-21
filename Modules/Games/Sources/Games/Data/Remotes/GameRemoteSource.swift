@@ -13,6 +13,8 @@ public class GameRemoteSource: RemoteDataSource {
     public typealias Request = GameDataRequest
     public typealias Response = GameItemResponse
     
+    public init() {}
+    
     public func execute(request: Request?) -> AnyPublisher<Response, Error> {
         return Future<GameItemResponse, Error> { completion in
             guard let page = request?.page else {

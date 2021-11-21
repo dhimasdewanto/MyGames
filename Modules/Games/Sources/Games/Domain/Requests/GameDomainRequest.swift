@@ -6,6 +6,11 @@
 //
 
 public struct GameDomainRequest {
-    let page: Int
-    let pageSize: Int
+    public var page: Int
+    public var pageSize: Int
+    
+    public init(page: Int, pageSize: Int) {
+        self.page = page
+        self.pageSize = pageSize
+    }
 }

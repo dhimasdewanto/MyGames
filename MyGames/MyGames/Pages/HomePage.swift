@@ -6,13 +6,21 @@
 //
 
 import SwiftUI
+import Core
+import Games
 
 /// Page to show home page.
 struct HomePage: View {
     var body: some View {
+        let gameUseCase = Injection.shared.provideGames()
+        let gamePresenter = GetListPresenter(
+            useCase: gameUseCase
+        )
+
         TabView {
             NavigationView {
                 ListGamesView()
+                    .environmentObject(gamePresenter)
             }
             .tabItem {
                 Image(

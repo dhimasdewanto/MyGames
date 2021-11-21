@@ -6,30 +6,57 @@
 //
 
 import SwiftUI
+import Core
+import Games
 
 /// View for list games.
 struct ListGamesView: View {
-    @State private var listGames = [GameItem]()
+    @EnvironmentObject var gamePresenter: GetListPresenter<
+        GameDomainRequest,
+        GameDomainModel,
+        Interactor<
+            GameDomainRequest,
+            [GameDomainModel],
+            GameRepository<
+                GameRemoteSource,
+                GameTransformer
+            >
+        >
+    >
 
-    private func loadData() {
-        listGamesRepo.getListGames(
-            page: 1,
-            pageSize: 30,
-            onUpdate: { listGames in
-                self.listGames = listGames
-            }
-        )
+    private func toGameItems(_ listData: [GameDomainModel]) -> [GameItem] {
+        return listData.map { data in
+            GameItem(
+                gameId: data.gameId,
+                name: data.name,
+                imageLocation: data.imageLocation,
+                rating: data.rating,
+                releaseDate: data.releaseDate
+            )
+        }
     }
 
     var body: some View {
-        Section {
-            if listGames.isEmpty {
+        ZStack {
+            if gamePresenter.isLoading {
                 ProgressView()
-                    .onAppear(perform: loadData)
+            } else if gamePresenter.isError {
+                Text("Error")
+            } else if gamePresenter.list.isEmpty { // 1
+                Text("Game currently not available")
             } else {
                 ListViewComponent(
-                    listGames: listGames
+                    listGames: toGameItems(gamePresenter.list)
                 )
+            }
+        }.onAppear {
+            if self.gamePresenter.list.count == 0 { // 2
+                self.gamePresenter.getList(
+                    request: GameDomainRequest(
+                        page: 1,
+                        pageSize: 30
+                    )
+                ) // 3
             }
         }
         .navigationTitle("Games")

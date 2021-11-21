@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E900B30E274AB2FF005D780F /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900B30D274AB2FF005D780F /* Injection.swift */; };
 		E945ED70274A4ECA006C438B /* Games in Frameworks */ = {isa = PBXBuildFile; productRef = E945ED6F274A4ECA006C438B /* Games */; };
 		E94DCA17274A4F0D0080F23E /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = E94DCA16274A4F0D0080F23E /* Core */; };
 		E9E322A52749556D009CCC10 /* MyGamesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E322A42749556D009CCC10 /* MyGamesApp.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E900B30D274AB2FF005D780F /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
 		E945ED68274A2538006C438B /* Core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Core; path = ../Modules/Core; sourceTree = "<group>"; };
 		E945ED69274A2C05006C438B /* Games */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Games; path = ../Modules/Games; sourceTree = "<group>"; };
 		E9E322A12749556D009CCC10 /* MyGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E900B30F274AB32F005D780F /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				E900B30D274AB2FF005D780F /* Injection.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		E945ED6A274A4E44006C438B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,17 +129,18 @@
 		E9E322A32749556D009CCC10 /* MyGames */ = {
 			isa = PBXGroup;
 			children = (
+				E9E322A82749556E009CCC10 /* Assets.xcassets */,
 				E9E322FA274958BD009CCC10 /* Components */,
+				E9E322A62749556D009CCC10 /* ContentView.swift */,
 				E9E32313274958BD009CCC10 /* CoreData */,
+				E900B30F274AB32F005D780F /* DI */,
 				E9E32318274958BD009CCC10 /* Entities */,
+				E9E322A42749556D009CCC10 /* MyGamesApp.swift */,
 				E9E3230B274958BD009CCC10 /* Pages */,
+				E9E322AA2749556E009CCC10 /* Preview Content */,
 				E9E3230F274958BD009CCC10 /* Repositories */,
 				E9E32307274958BD009CCC10 /* Utilities */,
 				E9E3231D274958BD009CCC10 /* Views */,
-				E9E322A42749556D009CCC10 /* MyGamesApp.swift */,
-				E9E322A62749556D009CCC10 /* ContentView.swift */,
-				E9E322A82749556E009CCC10 /* Assets.xcassets */,
-				E9E322AA2749556E009CCC10 /* Preview Content */,
 			);
 			path = MyGames;
 			sourceTree = "<group>";
@@ -337,6 +348,7 @@
 				E9E32332274958BE009CCC10 /* EditProfilePage.swift in Sources */,
 				E9E32336274958BE009CCC10 /* CatalogueHandler.swift in Sources */,
 				E9E32329274958BE009CCC10 /* MetacriticView.swift in Sources */,
+				E900B30E274AB2FF005D780F /* Injection.swift in Sources */,
 				E9E3233B274958BE009CCC10 /* DetailGameResponse.swift in Sources */,
 				E9E3233E274958BE009CCC10 /* SearchGamesView.swift in Sources */,
 				E9E32331274958BE009CCC10 /* DetailPage.swift in Sources */,

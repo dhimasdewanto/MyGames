@@ -8,9 +8,9 @@
 import Foundation
 
 public struct GameDomainModel {
-    var gameId: String
-    var name: String
-    var imageLocation: String
-    var rating: Double
-    var releaseDate: Date
+    public var gameId: String
+    public var name: String
+    public var imageLocation: String
+    public var rating: Double
+    public var releaseDate: Date
 }
