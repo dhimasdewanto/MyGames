@@ -25,19 +25,19 @@ Transformer.ResponseDomain == DetailGameDomainModel
     
     public typealias Response = DetailGameDomainModel
     
-    private let remoteSource: DetailGameRemoteSource
+    private let remote: DetailGameRemoteSource
     private let mapper: Transformer
     
     public init(
-        remoteSource: DetailGameRemoteSource,
+        remote: DetailGameRemoteSource,
         mapper: Transformer
     ) {
-        self.remoteSource = remoteSource
+        self.remote = remote
         self.mapper = mapper
     }
     
     public func execute(request: Request?) -> AnyPublisher<Response, Error> {
-        return remoteSource.execute(
+        return remote.execute(
             request: mapper.requestToData(request)
         ).map { game in
             return self.mapper.responseToDomain(game)

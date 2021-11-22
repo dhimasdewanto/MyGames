@@ -7,6 +7,7 @@
 
 import Core
 import Games
+import DetailGame
 import Foundation
 import UIKit
 
@@ -30,5 +31,18 @@ final class Injection: NSObject {
             mapper: mapper
         )
         return Interactor(repository: repository)
+    }
+
+    func provideDetailGame() -> DetailGamePresenter {
+        let remote = DetailGameRemoteSource()
+        let mapper = DetailGameTransformer()
+        let repository = DetailGameRepository(
+            remote: remote,
+            mapper: mapper
+        )
+        let useCase = Interactor(repository: repository)
+        return DetailGamePresenter(
+            useCase: useCase
+        )
     }
 }
