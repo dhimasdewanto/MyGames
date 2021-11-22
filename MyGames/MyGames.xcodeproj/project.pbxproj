@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E900B30E274AB2FF005D780F /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900B30D274AB2FF005D780F /* Injection.swift */; };
 		E945ED70274A4ECA006C438B /* Games in Frameworks */ = {isa = PBXBuildFile; productRef = E945ED6F274A4ECA006C438B /* Games */; };
+		E949F5B2274BCC5F00ACB02A /* DetailGame in Frameworks */ = {isa = PBXBuildFile; productRef = E949F5B1274BCC5F00ACB02A /* DetailGame */; };
 		E94DCA17274A4F0D0080F23E /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = E94DCA16274A4F0D0080F23E /* Core */; };
 		E9E322A52749556D009CCC10 /* MyGamesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E322A42749556D009CCC10 /* MyGamesApp.swift */; };
 		E9E322A72749556D009CCC10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E322A62749556D009CCC10 /* ContentView.swift */; };
@@ -46,6 +47,7 @@
 		E900B30D274AB2FF005D780F /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
 		E945ED68274A2538006C438B /* Core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Core; path = ../Modules/Core; sourceTree = "<group>"; };
 		E945ED69274A2C05006C438B /* Games */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Games; path = ../Modules/Games; sourceTree = "<group>"; };
+		E949F5B0274BCC5000ACB02A /* DetailGame */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DetailGame; path = ../Modules/DetailGame; sourceTree = "<group>"; };
 		E9E322A12749556D009CCC10 /* MyGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E322A42749556D009CCC10 /* MyGamesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGamesApp.swift; sourceTree = "<group>"; };
 		E9E322A62749556D009CCC10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				E945ED70274A4ECA006C438B /* Games in Frameworks */,
 				E9E32343274961F4009CCC10 /* SDWebImageSwiftUI in Frameworks */,
 				E94DCA17274A4F0D0080F23E /* Core in Frameworks */,
+				E949F5B2274BCC5F00ACB02A /* DetailGame in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +113,7 @@
 		E9E322982749556D009CCC10 = {
 			isa = PBXGroup;
 			children = (
+				E949F5B0274BCC5000ACB02A /* DetailGame */,
 				E945ED69274A2C05006C438B /* Games */,
 				E945ED68274A2538006C438B /* Core */,
 				E9E322A32749556D009CCC10 /* MyGames */,
@@ -248,6 +252,7 @@
 				E9E32342274961F4009CCC10 /* SDWebImageSwiftUI */,
 				E945ED6F274A4ECA006C438B /* Games */,
 				E94DCA16274A4F0D0080F23E /* Core */,
+				E949F5B1274BCC5F00ACB02A /* DetailGame */,
 			);
 			productName = MyGames;
 			productReference = E9E322A12749556D009CCC10 /* MyGames.app */;
@@ -573,6 +578,10 @@
 		E945ED6F274A4ECA006C438B /* Games */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Games;
+		};
+		E949F5B1274BCC5F00ACB02A /* DetailGame */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DetailGame;
 		};
 		E94DCA16274A4F0D0080F23E /* Core */ = {
 			isa = XCSwiftPackageProductDependency;
