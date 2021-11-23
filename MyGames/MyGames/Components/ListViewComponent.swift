@@ -38,16 +38,22 @@ struct ListViewComponent: View {
         )
     }
 
+    private func toDetailNavigation<Content: View>(
+        game: GameItem,
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+        let router = ListGamesRouter()
+        return NavigationLink(
+            destination: router.toDetail(for: game)
+        ) { content() }
+    }
+
     var body: some View {
         ScrollView {
             LazyVStack {
                 ForEach(0..<listGames.count) { index in
                     let game = listGames[index]
-                    NavigationLink(
-                        destination: DetailPage(
-                            game: game
-                        )
-                    ) {
+                    toDetailNavigation(game: game) {
                         ListTileComponent(
                             game: game,
                             ranking: index + 1,

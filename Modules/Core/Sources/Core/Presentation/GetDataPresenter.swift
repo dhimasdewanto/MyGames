@@ -15,7 +15,7 @@ open class GetDataPresenter<Request, Response, Interactor: UseCase>: ObservableO
     
     private let _useCase: Interactor
     
-    @Published public var state: State<Response> = .initial
+    @Published public var state: ViewState<Response> = .initial
     
     public init(useCase: Interactor) {
         _useCase = useCase
