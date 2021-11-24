@@ -29,9 +29,6 @@
 		E9E32330274958BE009CCC10 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E3230C274958BD009CCC10 /* HomePage.swift */; };
 		E9E32331274958BE009CCC10 /* DetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E3230D274958BD009CCC10 /* DetailPage.swift */; };
 		E9E32332274958BE009CCC10 /* EditProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E3230E274958BD009CCC10 /* EditProfilePage.swift */; };
-		E9E32333274958BE009CCC10 /* ListGamesRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E32310274958BD009CCC10 /* ListGamesRepo.swift */; };
-		E9E32334274958BE009CCC10 /* DetailGameRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E32311274958BD009CCC10 /* DetailGameRepo.swift */; };
-		E9E32335274958BE009CCC10 /* UrlRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E32312274958BD009CCC10 /* UrlRepo.swift */; };
 		E9E32336274958BE009CCC10 /* CatalogueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E32314274958BD009CCC10 /* CatalogueHandler.swift */; };
 		E9E32337274958BE009CCC10 /* CatalogueModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9E32315274958BD009CCC10 /* CatalogueModel.xcdatamodeld */; };
 		E9E32338274958BE009CCC10 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E32317274958BD009CCC10 /* PersistenceController.swift */; };
@@ -70,9 +67,6 @@
 		E9E3230C274958BD009CCC10 /* HomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		E9E3230D274958BD009CCC10 /* DetailPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPage.swift; sourceTree = "<group>"; };
 		E9E3230E274958BD009CCC10 /* EditProfilePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfilePage.swift; sourceTree = "<group>"; };
-		E9E32310274958BD009CCC10 /* ListGamesRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListGamesRepo.swift; sourceTree = "<group>"; };
-		E9E32311274958BD009CCC10 /* DetailGameRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailGameRepo.swift; sourceTree = "<group>"; };
-		E9E32312274958BD009CCC10 /* UrlRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlRepo.swift; sourceTree = "<group>"; };
 		E9E32314274958BD009CCC10 /* CatalogueHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogueHandler.swift; sourceTree = "<group>"; };
 		E9E32316274958BD009CCC10 /* CatalogueModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CatalogueModel.xcdatamodel; sourceTree = "<group>"; };
 		E9E32317274958BD009CCC10 /* PersistenceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
@@ -157,7 +151,6 @@
 				E9E322A42749556D009CCC10 /* MyGamesApp.swift */,
 				E9E3230B274958BD009CCC10 /* Pages */,
 				E9E322AA2749556E009CCC10 /* Preview Content */,
-				E9E3230F274958BD009CCC10 /* Repositories */,
 				E9E32307274958BD009CCC10 /* Utilities */,
 				E9E3231D274958BD009CCC10 /* Views */,
 			);
@@ -204,16 +197,6 @@
 				E9E3230E274958BD009CCC10 /* EditProfilePage.swift */,
 			);
 			path = Pages;
-			sourceTree = "<group>";
-		};
-		E9E3230F274958BD009CCC10 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-				E9E32310274958BD009CCC10 /* ListGamesRepo.swift */,
-				E9E32311274958BD009CCC10 /* DetailGameRepo.swift */,
-				E9E32312274958BD009CCC10 /* UrlRepo.swift */,
-			);
-			path = Repositories;
 			sourceTree = "<group>";
 		};
 		E9E32313274958BD009CCC10 /* CoreData */ = {
@@ -356,9 +339,6 @@
 				E9E32340274958BE009CCC10 /* FavoriteGamesView.swift in Sources */,
 				E9E3233D274958BE009CCC10 /* AboutView.swift in Sources */,
 				E9E32330274958BE009CCC10 /* HomePage.swift in Sources */,
-				E9E32334274958BE009CCC10 /* DetailGameRepo.swift in Sources */,
-				E9E32333274958BE009CCC10 /* ListGamesRepo.swift in Sources */,
-				E9E32335274958BE009CCC10 /* UrlRepo.swift in Sources */,
 				E9E3232F274958BE009CCC10 /* Notification.swift in Sources */,
 				E9E322A72749556D009CCC10 /* ContentView.swift in Sources */,
 				E9E32339274958BE009CCC10 /* DetailGameItem.swift in Sources */,
