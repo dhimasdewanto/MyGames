@@ -8,4 +8,5 @@
 public struct GameDataRequest {
     let page: Int
     let pageSize: Int
+    let searchGame: String?
 }

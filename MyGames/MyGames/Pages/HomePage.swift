@@ -30,6 +30,7 @@ struct HomePage: View {
 
             NavigationView {
                 SearchGamesView()
+                    .environmentObject(gamePresenter)
             }
             .tabItem {
                 Image(

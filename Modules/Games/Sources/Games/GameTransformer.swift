@@ -23,14 +23,22 @@ public struct GameTransformer: Mapper {
         guard let data = request else {
             return nil
         }
-        return GameDataRequest(page: data.page, pageSize: data.pageSize)
+        return GameDataRequest(
+            page: data.page,
+            pageSize: data.pageSize,
+            searchGame: data.searchGame
+        )
     }
     
     public func requestToDomain(_ request: GameDataRequest?) -> GameDomainRequest? {
         guard let data = request else {
             return nil
         }
-        return GameDomainRequest(page: data.page, pageSize: data.pageSize)
+        return GameDomainRequest(
+            page: data.page,
+            pageSize: data.pageSize,
+            searchGame: data.searchGame
+        )
     }
     
     public func responseToData(_ response: [GameDomainModel]) -> GameItemResponse {

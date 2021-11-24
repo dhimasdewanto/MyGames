@@ -6,12 +6,25 @@
 //
 
 import SwiftUI
+import Core
+import Games
 
 /// View for search games with search bar.
 struct SearchGamesView: View {
-    @State private var listGames = [GameItem]()
+    @EnvironmentObject var gamePresenter: GetListPresenter<
+        GameDomainRequest,
+        GameDomainModel,
+        Interactor<
+            GameDomainRequest,
+            [GameDomainModel],
+            GameRepository<
+                GameRemoteSource,
+                GameTransformer
+            >
+        >
+    >
+
     @State private var searchText = ""
-    @State private var isSearching = false
     @State private var isInitialSearch = true
 
     /// Load data from API.
@@ -21,22 +34,32 @@ struct SearchGamesView: View {
             return
         }
 
-        isSearching = true
         isInitialSearch = false
-        listGamesRepo.getSearchGames(
-            search: searchText,
-            page: 1,
-            pageSize: 30,
-            onUpdate: { listGames in
-                self.listGames = listGames
-                isSearching = false
-            }
+
+        self.gamePresenter.getList(
+            request: GameDomainRequest(
+                page: 1,
+                pageSize: 30,
+                searchGame: searchText
+            )
         )
     }
 
     /// Check if search result is not found.
     private func isNotFound() -> Bool {
-        return listGames.isEmpty && !isSearching
+        return gamePresenter.list.isEmpty && !gamePresenter.isLoading
+    }
+
+    private func convertGameItems(_ listData: [GameDomainModel]) -> [GameItem] {
+        return listData.map { data in
+            GameItem(
+                gameId: data.gameId,
+                name: data.name,
+                imageLocation: data.imageLocation,
+                rating: data.rating,
+                releaseDate: data.releaseDate
+            )
+        }
     }
 
     var body: some View {
@@ -58,7 +81,7 @@ struct SearchGamesView: View {
                     Text("Search Result Not Found")
                     Spacer()
                 }
-            } else if isSearching {
+            } else if gamePresenter.isLoading {
                 VStack {
                     Spacer()
                     ProgressView()
@@ -68,7 +91,8 @@ struct SearchGamesView: View {
                 VStack {
                     Spacer()
                     ListViewComponent(
-                        listGames: listGames)
+                        listGames: convertGameItems(gamePresenter.list)
+                    )
                 }
             }
         }

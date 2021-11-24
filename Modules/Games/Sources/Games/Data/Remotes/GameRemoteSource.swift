@@ -26,12 +26,20 @@ public class GameRemoteSource: RemoteDataSource {
             }
             
             let address = "\(Configs.mainUrl)/games"
+            
+            var queryItems = [
+                URLQueryItem(name: "page", value: "\(page)"),
+                URLQueryItem(name: "page_size", value: "\(pageSize)")
+            ]
+            if let search = request?.searchGame {
+                queryItems.append(
+                    URLQueryItem(name: "search", value: "\(search)")
+                )
+            }
+            
             guard let url = self.getUrl(
                 address: address,
-                queryItems: [
-                    URLQueryItem(name: "page", value: "\(page)"),
-                    URLQueryItem(name: "page_size", value: "\(pageSize)")
-                ]
+                queryItems: queryItems
             ) else {
                 return
             }

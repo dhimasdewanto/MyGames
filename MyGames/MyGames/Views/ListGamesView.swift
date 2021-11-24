@@ -24,7 +24,7 @@ struct ListGamesView: View {
         >
     >
 
-    private func toGameItems(_ listData: [GameDomainModel]) -> [GameItem] {
+    private func convertGameItems(_ listData: [GameDomainModel]) -> [GameItem] {
         return listData.map { data in
             GameItem(
                 gameId: data.gameId,
@@ -46,7 +46,7 @@ struct ListGamesView: View {
                 Text("Game currently not available")
             } else {
                 ListViewComponent(
-                    listGames: toGameItems(gamePresenter.list)
+                    listGames: convertGameItems(gamePresenter.list)
                 )
             }
         }.onAppear {
