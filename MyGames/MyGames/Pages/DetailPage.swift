@@ -13,7 +13,7 @@ import SDWebImageSwiftUI
 struct DetailPage: View {
     let game: GameItem
 
-    private let handler = CatalogueHandler()
+//    private let handler = CatalogueHandler()
 
     @EnvironmentObject var detailPresenter: DetailGamePresenter
 

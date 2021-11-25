@@ -10,32 +10,33 @@ import SwiftUI
 /// Component for list view of [GameItem].
 struct ListViewComponent: View {
     let listGames: [GameItem]
-    private let handler = CatalogueHandler()
-
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(
-        entity: CoreGame.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(
-                keyPath: \CoreGame.gameId,
-                ascending: true
-            )
-        ]
-    ) var coreGames: FetchedResults<CoreGame>
+//    private let handler = CatalogueHandler()
+//
+//    @Environment(\.managedObjectContext) var managedObjectContext
+//    @FetchRequest(
+//        entity: CoreGame.entity(),
+//        sortDescriptors: [
+//            NSSortDescriptor(
+//                keyPath: \CoreGame.gameId,
+//                ascending: true
+//            )
+//        ]
+//    ) var coreGames: FetchedResults<CoreGame>
 
     private func onFavorite(game: GameItem) {
-        handler.setIsFavorite(
-            context: managedObjectContext,
-            coreGames: coreGames,
-            game: game
-        )
+//        handler.setIsFavorite(
+//            context: managedObjectContext,
+//            coreGames: coreGames,
+//            game: game
+//        )
     }
 
     private func getIsFavorite(game: GameItem) -> Bool {
-        return handler.getIsFavorite(
-            coreGames: coreGames,
-            game: game
-        )
+        return false
+//        return handler.getIsFavorite(
+//            coreGames: coreGames,
+//            game: game
+//        )
     }
 
     private func toDetailNavigation<Content: View>(

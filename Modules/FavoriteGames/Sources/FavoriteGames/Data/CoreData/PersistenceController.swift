@@ -22,6 +22,21 @@ struct PersistenceController {
             }
         }
     }
+    
+    /// Get list games from Core Data.
+    func getListData() -> [CoreGame] {
+        let fetch = NSFetchRequest<CoreGame>(
+            entityName: Configs.coreDataName
+        )
+        let context = container.viewContext
+        do {
+            let coreData = try context.fetch(fetch)
+            return coreData
+        } catch {
+            print("Error while getListData")
+            return []
+        }
+    }
 
     /// Save Core Data.
     func save(
