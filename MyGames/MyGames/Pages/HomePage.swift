@@ -13,9 +13,7 @@ import Games
 struct HomePage: View {
     var body: some View {
         let gameUseCase = Injection.shared.provideGames()
-        let gamePresenter = GetListPresenter(
-            useCase: gameUseCase
-        )
+        let gamePresenter = GamePresenter(useCase: gameUseCase)
 
         TabView {
             NavigationView {

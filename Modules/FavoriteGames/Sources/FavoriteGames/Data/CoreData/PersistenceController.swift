@@ -15,7 +15,7 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init() {
-        container = NSPersistentContainer(name: Configs.coreDataName)
+        container = NSPersistentContainer(name: CoreDataConfigs.coreDataName)
         container.loadPersistentStores { _, error in
             if let error = error {
                 fatalError("Error: \(error.localizedDescription)")
@@ -26,7 +26,7 @@ struct PersistenceController {
     /// Get list games from Core Data.
     func getListData() -> [CoreGame] {
         let fetch = NSFetchRequest<CoreGame>(
-            entityName: Configs.coreDataName
+            entityName: CoreDataConfigs.coreDataName
         )
         let context = container.viewContext
         do {

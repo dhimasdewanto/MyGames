@@ -28,7 +28,7 @@ class FavoriteGamesLocaleSource : LocaleDataSource {
     ) -> AnyPublisher<[FavoriteGameEntity], Error> {
         return Future<[FavoriteGameEntity], Error> { completion in
             let fetch = NSFetchRequest<CoreGame>(
-                entityName: Configs.coreDataName
+                entityName: CoreDataConfigs.coreDataName
             )
             let predicate = NSPredicate(format: "isFavorite == true")
             fetch.predicate = predicate

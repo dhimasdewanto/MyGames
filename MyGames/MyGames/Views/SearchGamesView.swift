@@ -11,18 +11,7 @@ import Games
 
 /// View for search games with search bar.
 struct SearchGamesView: View {
-    @EnvironmentObject var gamePresenter: GetListPresenter<
-        GameDomainRequest,
-        GameDomainModel,
-        Interactor<
-            GameDomainRequest,
-            [GameDomainModel],
-            GameRepository<
-                GameRemoteSource,
-                GameTransformer
-            >
-        >
-    >
+    @EnvironmentObject var gamePresenter: GamePresenter
 
     @State private var searchText = ""
     @State private var isInitialSearch = true
@@ -47,7 +36,15 @@ struct SearchGamesView: View {
 
     /// Check if search result is not found.
     private func isNotFound() -> Bool {
-        return gamePresenter.list.isEmpty && !gamePresenter.isLoading
+        switch gamePresenter.state {
+        case .success(let listData):
+            if listData.isEmpty {
+                return true
+            }
+            return false
+        default:
+            return false
+        }
     }
 
     private func convertGameItems(_ listData: [GameDomainModel]) -> [GameItem] {
@@ -81,19 +78,21 @@ struct SearchGamesView: View {
                     Text("Search Result Not Found")
                     Spacer()
                 }
-            } else if gamePresenter.isLoading {
-                VStack {
-                    Spacer()
-                    ProgressView()
-                    Spacer()
-                }
             } else {
-                VStack {
-                    Spacer()
-                    ListViewComponent(
-                        listGames: convertGameItems(gamePresenter.list)
-                    )
-                }
+                Spacer()
+                StateHandler<[GameDomainModel]>(
+                    state: gamePresenter.state,
+                    onLoad: loadData,
+                    loadingView: AnyView(ProgressView()),
+                    successView: { state in
+                        return AnyView(
+                            ListViewComponent(
+                                listGames: convertGameItems(state)
+                            )
+                        )
+                    }
+                )
+                Spacer()
             }
         }
         .navigationTitle("Search Games")

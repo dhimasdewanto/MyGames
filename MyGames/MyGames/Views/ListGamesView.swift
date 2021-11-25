@@ -11,18 +11,7 @@ import Games
 
 /// View for list games.
 struct ListGamesView: View {
-    @EnvironmentObject var gamePresenter: GetListPresenter<
-        GameDomainRequest,
-        GameDomainModel,
-        Interactor<
-            GameDomainRequest,
-            [GameDomainModel],
-            GameRepository<
-                GameRemoteSource,
-                GameTransformer
-            >
-        >
-    >
+    @EnvironmentObject var gamePresenter: GamePresenter
 
     private func convertGameItems(_ listData: [GameDomainModel]) -> [GameItem] {
         return listData.map { data in
@@ -36,30 +25,26 @@ struct ListGamesView: View {
         }
     }
 
+    /// Load data from API.
+    private func loadData() {
+        gamePresenter.getList(
+            request: GameDomainRequest(page: 1, pageSize: 30)
+        )
+    }
+
     var body: some View {
-        ZStack {
-            if gamePresenter.isLoading {
-                ProgressView()
-            } else if gamePresenter.isError {
-                Text("Error")
-            } else if gamePresenter.list.isEmpty { // 1
-                Text("Game currently not available")
-            } else {
-                ListViewComponent(
-                    listGames: convertGameItems(gamePresenter.list)
+        StateHandler<[GameDomainModel]>(
+            state: gamePresenter.state,
+            onLoad: loadData,
+            loadingView: AnyView(ProgressView()),
+            successView: { state in
+                return AnyView(
+                    ListViewComponent(
+                        listGames: convertGameItems(state)
+                    )
                 )
             }
-        }.onAppear {
-            if self.gamePresenter.list.count == 0 { // 2
-                self.gamePresenter.getList(
-                    request: GameDomainRequest(
-                        page: 1,
-                        pageSize: 30
-                    )
-                ) // 3
-            }
-        }
-        .navigationTitle("Games")
+        ).navigationTitle("Games")
     }
 }
 

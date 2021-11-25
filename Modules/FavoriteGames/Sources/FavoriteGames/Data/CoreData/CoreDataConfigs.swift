@@ -6,7 +6,7 @@
 //
 
 /// Main configuration of this package.
-class Configs {
+class CoreDataConfigs {
     /// Name of core data .xcdatamodel
     static let coreDataName: String = "CatalogueModel"
 }
