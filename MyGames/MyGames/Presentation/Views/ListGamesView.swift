@@ -38,6 +38,12 @@ struct ListGamesView: View {
             onLoad: loadData,
             loadingView: AnyView(ProgressView()),
             successView: { state in
+                if state.isEmpty {
+                    return AnyView(
+                        Text("Game is Empty")
+                    )
+                }
+                
                 return AnyView(
                     ListViewComponent(
                         listGames: convertGameItems(state)
