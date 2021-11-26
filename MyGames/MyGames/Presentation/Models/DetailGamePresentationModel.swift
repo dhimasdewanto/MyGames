@@ -2,12 +2,12 @@
 //  DetailGameItem.swift
 //  MyCatalogueGames
 //
-//  Created by Dhimas Dewanto on 19/08/21.
+//  Created by Dhimas Dewanto on 19/11/21.
 //
 
 import Foundation
 
-struct DetailGameItem {
+struct DetailGamePresentationModel {
     var gameId: String
     var name: String
     var imageLocation: String

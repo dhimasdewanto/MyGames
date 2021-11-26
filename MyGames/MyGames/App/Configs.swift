@@ -2,7 +2,7 @@
 //  Configs.swift
 //  MyGames
 //
-//  Created by TMLI IT Dev on 27/11/21.
+//  Created by Dhimas Dewanto on 27/11/21.
 //
 
 /// Main configurations for this app.

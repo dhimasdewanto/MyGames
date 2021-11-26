@@ -2,7 +2,7 @@
 //  ListTileComponent.swift
 //  MyCatalogueGames
 //
-//  Created by Dhimas Dewanto on 15/08/21.
+//  Created by Dhimas Dewanto on 15/11/21.
 //
 
 import SwiftUI
@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 /// Component tile for [GameItem].
 struct ListTileComponent: View {
-    var game: GameItem
+    var game: GamePresentationModel
     var ranking: Int?
     var favorite: FavoriteItem
 

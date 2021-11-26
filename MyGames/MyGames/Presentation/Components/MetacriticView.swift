@@ -2,7 +2,7 @@
 //  MetacriticView.swift
 //  MyCatalogueGames
 //
-//  Created by Dhimas Dewanto on 23/08/21.
+//  Created by Dhimas Dewanto on 23/11/21.
 //
 
 import SwiftUI

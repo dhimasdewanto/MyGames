@@ -2,7 +2,7 @@
 //  SearchBarComponent.swift
 //  MyCatalogueGames
 //
-//  Created by Dhimas Dewanto on 15/08/21.
+//  Created by Dhimas Dewanto on 15/11/21.
 //
 
 import SwiftUI

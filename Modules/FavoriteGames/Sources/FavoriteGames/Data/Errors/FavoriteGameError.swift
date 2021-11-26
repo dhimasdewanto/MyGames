@@ -2,7 +2,7 @@
 //  File.swift
 //  
 //
-//  Created by TMLI IT Dev on 25/11/21.
+//  Created by Dhimas Dewanto on 25/11/21.
 //
 
 enum FavoriteGameError: String, Error {

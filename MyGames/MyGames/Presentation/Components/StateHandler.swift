@@ -2,7 +2,7 @@
 //  StateHandler.swift
 //  MyGames
 //
-//  Created by TMLI IT Dev on 23/11/21.
+//  Created by Dhimas Dewanto on 23/11/21.
 //
 
 import Core

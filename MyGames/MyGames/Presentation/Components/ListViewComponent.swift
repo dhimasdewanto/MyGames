@@ -2,14 +2,14 @@
 //  ListComponent.swift
 //  MyCatalogueGames
 //
-//  Created by Dhimas Dewanto on 14/08/21.
+//  Created by Dhimas Dewanto on 14/11/21.
 //
 
 import SwiftUI
 
 /// Component for list view of [GameItem].
 struct ListViewComponent: View {
-    let listGames: [GameItem]
+    let listGames: [GamePresentationModel]
 //    private let handler = CatalogueHandler()
 //
 //    @Environment(\.managedObjectContext) var managedObjectContext
@@ -23,7 +23,7 @@ struct ListViewComponent: View {
 //        ]
 //    ) var coreGames: FetchedResults<CoreGame>
 
-    private func onFavorite(game: GameItem) {
+    private func onFavorite(game: GamePresentationModel) {
 //        handler.setIsFavorite(
 //            context: managedObjectContext,
 //            coreGames: coreGames,
@@ -31,7 +31,7 @@ struct ListViewComponent: View {
 //        )
     }
 
-    private func getIsFavorite(game: GameItem) -> Bool {
+    private func getIsFavorite(game: GamePresentationModel) -> Bool {
         return false
 //        return handler.getIsFavorite(
 //            coreGames: coreGames,
@@ -40,7 +40,7 @@ struct ListViewComponent: View {
     }
 
     private func toDetailNavigation<Content: View>(
-        game: GameItem,
+        game: GamePresentationModel,
         @ViewBuilder content: () -> Content
     ) -> some View {
         let router = ListGamesRouter()
@@ -77,7 +77,7 @@ struct ListComponent_Previews: PreviewProvider {
         NavigationView {
             ListViewComponent(
                 listGames: [
-                    GameItem(
+                    GamePresentationModel(
                         gameId: "3",
                         name: "Games C Games C Games C Games C",
                         imageLocation: "gtav",

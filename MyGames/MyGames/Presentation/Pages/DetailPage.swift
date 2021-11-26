@@ -2,7 +2,7 @@
 //  DetailPage.swift
 //  MyCatalogueGames
 //
-//  Created by Dhimas Dewanto on 12/08/21.
+//  Created by Dhimas Dewanto on 12/11/21.
 //
 
 import DetailGame
@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 
 /// Page to show detail game.
 struct DetailPage: View {
-    let game: GameItem
+    let game: GamePresentationModel
 
 //    private let handler = CatalogueHandler()
 

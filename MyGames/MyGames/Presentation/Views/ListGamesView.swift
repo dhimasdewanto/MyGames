@@ -2,7 +2,7 @@
 //  ListGamesView.swift
 //  MyCatalogueGames
 //
-//  Created by Dhimas Dewanto on 14/08/21.
+//  Created by Dhimas Dewanto on 14/11/21.
 //
 
 import SwiftUI
@@ -13,9 +13,9 @@ import Games
 struct ListGamesView: View {
     @EnvironmentObject var gamePresenter: GamePresenter
 
-    private func convertGameItems(_ listData: [GameDomainModel]) -> [GameItem] {
+    private func convertGameItems(_ listData: [GameDomainModel]) -> [GamePresentationModel] {
         return listData.map { data in
-            GameItem(
+            GamePresentationModel(
                 gameId: data.gameId,
                 name: data.name,
                 imageLocation: data.imageLocation,

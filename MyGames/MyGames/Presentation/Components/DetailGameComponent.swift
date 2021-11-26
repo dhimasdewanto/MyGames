@@ -2,7 +2,7 @@
 //  DetailGameComponent.swift
 //  MyGames
 //
-//  Created by TMLI IT Dev on 23/11/21.
+//  Created by Dhimas Dewanto on 23/11/21.
 //
 
 import DetailGame
@@ -10,7 +10,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct DetailGameComponent: View {
-    let game: GameItem
+    let game: GamePresentationModel
     let detail: DetailGameDomainModel
 
     private func readDate(_ date: Date) -> String {
