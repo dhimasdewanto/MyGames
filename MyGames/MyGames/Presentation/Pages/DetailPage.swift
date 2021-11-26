@@ -19,7 +19,7 @@ struct DetailPage: View {
 
     /// Load detail data from API.
     private func loadData() {
-        detailPresenter.getList(request: DetailGameDomainRequest(gameId: game.gameId))
+        detailPresenter.loadData(request: DetailGameDomainRequest(gameId: game.gameId))
     }
 
     /// Get is favorite from core data.

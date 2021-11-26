@@ -27,7 +27,7 @@ struct ListGamesView: View {
 
     /// Load data from API.
     private func loadData() {
-        gamePresenter.getList(
+        gamePresenter.loadData(
             request: GameDomainRequest(page: 1, pageSize: 30)
         )
     }

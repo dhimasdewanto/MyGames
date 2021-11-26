@@ -2,73 +2,54 @@
 //  FavoriteGamesView.swift
 //  MyCatalogueGames
 //
-//  Created by Dhimas Dewanto on 29/08/21.
+//  Created by Dhimas Dewanto on 29/11/21.
 //
 
 import SwiftUI
+import FavoriteGames
 
 /// View for favorite games.
 struct FavoriteGamesView: View {
+    @EnvironmentObject var favoritePresenter: GetFavoriteGamesPresenter
 
-//    @Environment(\.managedObjectContext) var managedObjectContext
-//    @FetchRequest(
-//        entity: CoreGame.entity(),
-//        sortDescriptors: [
-//            NSSortDescriptor(
-//                keyPath: \CoreGame.rating,
-//                ascending: false
-//            )
-//        ],
-//        predicate: NSPredicate(
-//            format: "isFavorite == true"
-//        )
-//    ) var coreGames: FetchedResults<CoreGame>
+    private func convertGameItems(_ listData: [FavoriteGameDomainModel]) -> [GamePresentationModel] {
+        return listData.map { data in
+            GamePresentationModel(
+                gameId: data.gameId,
+                name: data.name,
+                imageLocation: data.imageLocation,
+                rating: data.rating,
+                releaseDate: data.releaseDate
+            )
+        }
+    }
 
-    /// Convert [CoreGame] to [GameItem].
-//    private func toGameItem(coreGame: CoreGame) -> GameItem {
-//        return GameItem(
-//            gameId: coreGame.gameId ?? "",
-//            name: coreGame.name ?? "",
-//            imageLocation: coreGame.imageLocation ?? "",
-//            rating: coreGame.rating,
-//            releaseDate: coreGame.releaseDate ?? Date()
-//        )
-//    }
+    /// Load data from Core Data.
+    private func loadData() {
+        favoritePresenter.loadData(
+            request: nil
+        )
+    }
 
     var body: some View {
-        Section {
-//            if coreGames.isEmpty {
-//                Text("Favorite is Empty")
-//            } else {
-//                ScrollView {
-//                    LazyVStack {
-//                        ForEach(coreGames.indices, id: \.self) { index in
-//                            let coreGame = coreGames[index]
-//                            let game = toGameItem(coreGame: coreGame)
-//
-//                            NavigationLink(
-//                                destination: DetailPage(
-//                                    game: game
-//                                )
-//                            ) {
-//                                ListTileComponent(
-//                                    game: game,
-//                                    ranking: index + 1,
-//                                    favorite: FavoriteItem(
-//                                        isFavorite: coreGame.isFavorite,
-//                                        onFavorite: {
-//                                            coreGame.isFavorite = !coreGame.isFavorite
-//                                            PersistenceController.shared.save()
-//                                        }
-//                                    )
-//                                )
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-        }
-        .navigationTitle("Favorites")
+        StateHandler<[FavoriteGameDomainModel]>(
+            state: favoritePresenter.state,
+            onLoad: loadData,
+            loadingView: AnyView(ProgressView()),
+            successView: { state in
+                if state.isEmpty {
+                    return AnyView(
+                        Text("Favorite is Empty")
+                    )
+                }
+
+                return AnyView(
+                    ListViewComponent(
+                        listGames: convertGameItems(state)
+                    )
+                )
+            }
+        ).navigationTitle("Favorites")
     }
 }
 

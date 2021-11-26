@@ -25,7 +25,7 @@ struct SearchGamesView: View {
 
         isInitialSearch = false
 
-        self.gamePresenter.getList(
+        self.gamePresenter.loadData(
             request: GameDomainRequest(
                 page: 1,
                 pageSize: 30,
