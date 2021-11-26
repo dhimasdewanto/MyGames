@@ -13,6 +13,13 @@ struct DetailGameComponent: View {
     let game: GameItem
     let detail: DetailGameDomainModel
 
+    private func readDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMMM YYYY"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+
     var body: some View {
         ScrollView {
             VStack {
@@ -38,11 +45,7 @@ struct DetailGameComponent: View {
                     .padding(.top, 5)
                     .padding(.horizontal)
 
-                Text(
-                    FormatDate.toString(
-                        game.releaseDate
-                    )
-                )
+                Text(self.readDate(game.releaseDate))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
 

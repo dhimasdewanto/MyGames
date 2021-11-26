@@ -14,6 +14,13 @@ struct ListTileComponent: View {
     var ranking: Int?
     var favorite: FavoriteItem
 
+    private func readDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM YY"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+
     var body: some View {
         HStack {
             ZStack(
@@ -22,14 +29,14 @@ struct ListTileComponent: View {
                 WebImage(
                     url: URL(string: game.imageLocation)
                 )
-                .resizable()
-                .scaledToFill()
-                .frame(
-                    width: 120,
-                    height: 100
-                )
-                .cornerRadius(10)
-                .clipped()
+                    .resizable()
+                    .scaledToFill()
+                    .frame(
+                        width: 120,
+                        height: 100
+                    )
+                    .cornerRadius(10)
+                    .clipped()
 
                 if game.rating > 0 {
                     Text("⭐️ \(String(format: "%.1f", game.rating))")
@@ -60,7 +67,7 @@ struct ListTileComponent: View {
 
                 Spacer()
 
-                Text(FormatDate.toString(game.releaseDate))
+                Text(self.readDate(game.releaseDate))
                     .foregroundColor(.primary)
                     .font(.subheadline)
                     .padding(.horizontal, 5)
