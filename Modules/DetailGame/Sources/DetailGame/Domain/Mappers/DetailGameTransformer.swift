@@ -77,6 +77,18 @@ public struct DetailGameTransformer: Mapper {
             .replacingOccurrences(of: "<li>", with: "\n 💡 ")
             .replacingOccurrences(of: "</li>", with: "")
             .replacingOccurrences(of: "&#39;s", with: "'s")
+            .replacingOccurrences(of: "<h1>", with: "")
+            .replacingOccurrences(of: "</h1>", with: "")
+            .replacingOccurrences(of: "<h2>", with: "")
+            .replacingOccurrences(of: "</h2>", with: "")
+            .replacingOccurrences(of: "<h3>", with: "")
+            .replacingOccurrences(of: "</h3>", with: "")
+            .replacingOccurrences(of: "<h4>", with: "")
+            .replacingOccurrences(of: "</h4>", with: "")
+            .replacingOccurrences(of: "<h5>", with: "")
+            .replacingOccurrences(of: "</h5>", with: "")
+            .replacingOccurrences(of: "<h6>", with: "")
+            .replacingOccurrences(of: "</h6>", with: "")
     }
     
 }

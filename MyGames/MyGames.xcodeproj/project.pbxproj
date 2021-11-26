@@ -136,13 +136,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		E945ED6A274A4E44006C438B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		E995AE75274D942800018910 /* Routers */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,7 +153,6 @@
 				E945ED68274A2538006C438B /* Core */,
 				E9E322A32749556D009CCC10 /* MyGames */,
 				E9E322A22749556D009CCC10 /* Products */,
-				E945ED6A274A4E44006C438B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
