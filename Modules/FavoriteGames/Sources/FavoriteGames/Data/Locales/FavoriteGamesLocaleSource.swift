@@ -31,7 +31,7 @@ public class FavoriteGamesLocaleSource : LocaleDataSource {
         request: Void?
     ) -> AnyPublisher<[Response], Error> {
         return Future<[Response], Error> { completion in
-            let fetch = NSFetchRequest<CoreGame>(
+            let fetch = NSFetchRequest<FavoriteCore>(
                 entityName: CoreDataConfigs.coreDataName
             )
             let predicate = NSPredicate(format: "isFavorite == true")
@@ -94,7 +94,7 @@ public class FavoriteGamesLocaleSource : LocaleDataSource {
     
     private func createCoreData(entity: Response) -> Void {
         let game = entity
-        let coreGame = CoreGame(context: managedObjectContext)
+        let coreGame = FavoriteCore(context: managedObjectContext)
         coreGame.gameId = game.gameId
         coreGame.imageLocation = game.imageLocation
         coreGame.name = game.name

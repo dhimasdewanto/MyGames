@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CoreGame" representedClassName="CoreGame" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FavoriteCore" representedClassName=".FavoriteCore" syncable="YES" codeGenerationType="class">
         <attribute name="gameId" optional="YES" attributeType="String"/>
         <attribute name="imageLocation" optional="YES" attributeType="String"/>
         <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -9,6 +9,6 @@
         <attribute name="releaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="CoreGame" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="FavoriteCore" positionX="-63" positionY="-18" width="128" height="119"/>
     </elements>
 </model>

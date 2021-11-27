@@ -11,24 +11,33 @@ import CoreData
 public struct PersistenceController {
     /// Singleton of [PersistenceController].
     public static let shared = PersistenceController()
-
+    
     public let container: NSPersistentContainer
-
+    
     init() {
+        let bundle = Bundle.module
+        let modelURL = bundle.url(
+            forResource: CoreDataConfigs.coreDataName,
+            withExtension: ".momd"
+        )!
+        let model = NSManagedObjectModel(contentsOf: modelURL)!
+        
         container = NSPersistentContainer(
-            name: CoreDataConfigs.coreDataName
+            name: CoreDataConfigs.coreDataName,
+            managedObjectModel: model
         )
+        
         container.loadPersistentStores { _, error in
             if let error = error {
-                fatalError("Error: \(error.localizedDescription)")
+                fatalError("ERROR: \(error.localizedDescription)")
             }
         }
     }
     
     /// Get list games from Core Data.
-    func getListData() -> [CoreGame] {
-        let fetch = NSFetchRequest<CoreGame>(
-            entityName: CoreDataConfigs.coreDataName
+    func getListData() -> [FavoriteCore] {
+        let fetch = NSFetchRequest<FavoriteCore>(
+            entityName: CoreDataConfigs.coreDataEntity
         )
         let context = container.viewContext
         do {
@@ -39,7 +48,7 @@ public struct PersistenceController {
             return []
         }
     }
-
+    
     /// Save Core Data.
     func save(
         completion: @escaping (Error?) -> Void = {_ in}
@@ -54,7 +63,7 @@ public struct PersistenceController {
             }
         }
     }
-
+    
     /// Delete Core Data item.
     func delete(
         _ object: NSManagedObject,

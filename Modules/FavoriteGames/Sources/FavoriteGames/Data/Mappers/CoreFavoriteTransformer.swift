@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 class CoreFavoriteTransformer {
-    func toEntity(coreGame: CoreGame) -> FavoriteGameEntity {
+    func toEntity(coreGame: FavoriteCore) -> FavoriteGameEntity {
         let data = coreGame
         return FavoriteGameEntity(
             gameId: data.gameId ?? "",
@@ -22,7 +22,7 @@ class CoreFavoriteTransformer {
         )
     }
     
-    func toEntities(coreGames: [CoreGame]) -> [FavoriteGameEntity] {
+    func toEntities(coreGames: [FavoriteCore]) -> [FavoriteGameEntity] {
         return coreGames.map { data in
             return FavoriteGameEntity(
                 gameId: data.gameId ?? "",

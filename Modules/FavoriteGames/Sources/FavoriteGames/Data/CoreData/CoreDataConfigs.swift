@@ -8,8 +8,8 @@
 /// Main configuration of this package.
 class CoreDataConfigs {
     /// Core Data File Name.
-    static let coreDataName: String = "CatalogueModel"
+    static let coreDataName: String = "GameCoreModel"
 
     /// Core Data Entity Name.
-    static let coreDataEntity: String = "CoreGame"
+    static let coreDataEntity: String = "FavoriteCore"
 }
