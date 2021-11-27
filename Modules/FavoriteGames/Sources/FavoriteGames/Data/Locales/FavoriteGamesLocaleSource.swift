@@ -29,8 +29,8 @@ public class FavoriteGamesLocaleSource : LocaleDataSource {
     
     public func list(
         request: Void?
-    ) -> AnyPublisher<[FavoriteGameEntity], Error> {
-        return Future<[FavoriteGameEntity], Error> { completion in
+    ) -> AnyPublisher<[Response], Error> {
+        return Future<[Response], Error> { completion in
             let fetch = NSFetchRequest<CoreGame>(
                 entityName: CoreDataConfigs.coreDataName
             )
@@ -45,7 +45,7 @@ public class FavoriteGamesLocaleSource : LocaleDataSource {
         }.eraseToAnyPublisher()
     }
     
-    public func add(entities: [FavoriteGameEntity]) -> AnyPublisher<Void, Error> {
+    public func add(entities: [Response]) -> AnyPublisher<Void, Error> {
         return Future<Void, Error> { completion in
             for entity in entities {
                 self.createCoreData(entity: entity)
@@ -55,7 +55,7 @@ public class FavoriteGamesLocaleSource : LocaleDataSource {
         }.eraseToAnyPublisher()
     }
     
-    public func get(id: String) -> AnyPublisher<FavoriteGameEntity, Error> {
+    public func get(id: String) -> AnyPublisher<Response, Error> {
         return Future<FavoriteGameEntity, Error> { completion in
             let listCoreData = PersistenceController.shared.getListData()
             let findedNil = listCoreData.first { coreData in
@@ -70,7 +70,10 @@ public class FavoriteGamesLocaleSource : LocaleDataSource {
         }.eraseToAnyPublisher()
     }
     
-    public func update(id: String, entity: FavoriteGameEntity) -> AnyPublisher<Void, Error> {
+    /// Update game data in Core Data.
+    ///
+    /// If not exist, it will create instead.
+    public func update(id: String, entity: Response) -> AnyPublisher<Void, Error> {
         return Future<Void, Error> { completion in
             let listCoreData = PersistenceController.shared.getListData()
             guard let coreData = (listCoreData.first { coreData in
@@ -89,7 +92,7 @@ public class FavoriteGamesLocaleSource : LocaleDataSource {
         }.eraseToAnyPublisher()
     }
     
-    private func createCoreData(entity: FavoriteGameEntity) -> Void {
+    private func createCoreData(entity: Response) -> Void {
         let game = entity
         let coreGame = CoreGame(context: managedObjectContext)
         coreGame.gameId = game.gameId

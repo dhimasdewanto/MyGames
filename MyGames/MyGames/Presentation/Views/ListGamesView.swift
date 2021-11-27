@@ -27,7 +27,7 @@ struct ListGamesView: View {
 
     /// Load data from API.
     private func loadData() {
-        gamePresenter.loadData(
+        gamePresenter.execute(
             request: GameDomainRequest(page: 1, pageSize: 30)
         )
     }
@@ -43,7 +43,7 @@ struct ListGamesView: View {
                         Text("Game is Empty")
                     )
                 }
-                
+
                 return AnyView(
                     ListViewComponent(
                         listGames: convertGameItems(state)

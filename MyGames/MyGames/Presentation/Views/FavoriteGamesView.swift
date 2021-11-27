@@ -26,7 +26,7 @@ struct FavoriteGamesView: View {
 
     /// Load data from Core Data.
     private func loadData() {
-        favoritePresenter.loadData(
+        favoritePresenter.execute(
             request: nil
         )
     }

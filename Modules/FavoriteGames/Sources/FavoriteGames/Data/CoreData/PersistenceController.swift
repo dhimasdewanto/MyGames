@@ -8,14 +8,16 @@
 import CoreData
 
 /// Controller for Core Data.
-struct PersistenceController {
+public struct PersistenceController {
     /// Singleton of [PersistenceController].
-    static let shared = PersistenceController()
+    public static let shared = PersistenceController()
 
-    let container: NSPersistentContainer
+    public let container: NSPersistentContainer
 
     init() {
-        container = NSPersistentContainer(name: CoreDataConfigs.coreDataName)
+        container = NSPersistentContainer(
+            name: CoreDataConfigs.coreDataName
+        )
         container.loadPersistentStores { _, error in
             if let error = error {
                 fatalError("Error: \(error.localizedDescription)")

@@ -6,6 +6,7 @@
 //
 
 import Core
+import CoreData
 import Games
 import DetailGame
 import Foundation
@@ -16,6 +17,10 @@ import UIKit
 final class Injection: NSObject {
     /// Singleton of [Injection].
     static let shared = Injection.init()
+
+    private func managedObjectContext() -> NSManagedObjectContext {
+        return PersistenceController.shared.container.viewContext
+    }
 
     func provideGames() -> GamePresenter {
         let remote = GameRemoteSource()
@@ -52,6 +57,21 @@ final class Injection: NSObject {
         )
         let useCase = Interactor(repository: repository)
         return GetFavoriteGamesPresenter(
+            useCase: useCase
+        )
+    }
+
+    func provideSetFavorite() -> SetFavoriteGamePresenter {
+        let localeSource = FavoriteGamesLocaleSource(
+            managedObjectContext: self.managedObjectContext()
+        )
+        let mapper = SetFavoriteGameTransformer()
+        let repository = SetFavoriteGameRepository(
+            localeSource: localeSource,
+            mapper: mapper
+        )
+        let useCase = Interactor(repository: repository)
+        return SetFavoriteGamePresenter(
             useCase: useCase
         )
     }

@@ -7,6 +7,9 @@
 
 /// Main configuration of this package.
 class CoreDataConfigs {
-    /// Name of core data .xcdatamodel
+    /// Core Data File Name.
     static let coreDataName: String = "CatalogueModel"
+
+    /// Core Data Entity Name.
+    static let coreDataEntity: String = "CoreGame"
 }

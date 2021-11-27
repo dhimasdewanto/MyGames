@@ -19,7 +19,6 @@ public struct FavoriteGameTransformer: Mapper {
     
     public init() {}
     
-    
     public func requestToData(_ request: Void?) -> Void? {
         return nil
     }

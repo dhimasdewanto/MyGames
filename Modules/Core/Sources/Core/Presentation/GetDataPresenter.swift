@@ -21,7 +21,7 @@ open class GetDataPresenter<Request, Response, Interactor: UseCase>: ObservableO
         _useCase = useCase
     }
     
-    public func loadData(request: Request?) {
+    public func execute(request: Request?) {
         self.state = .loading
         _useCase.execute(request: request)
             .receive(on: RunLoop.main)

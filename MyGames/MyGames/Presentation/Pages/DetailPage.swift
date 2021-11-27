@@ -6,6 +6,7 @@
 //
 
 import DetailGame
+import FavoriteGames
 import SwiftUI
 import SDWebImageSwiftUI
 
@@ -16,10 +17,15 @@ struct DetailPage: View {
 //    private let handler = CatalogueHandler()
 
     @EnvironmentObject var detailPresenter: DetailGamePresenter
+    @EnvironmentObject var setFavoritePresenter: SetFavoriteGamePresenter
 
     /// Load detail data from API.
     private func loadData() {
-        detailPresenter.loadData(request: DetailGameDomainRequest(gameId: game.gameId))
+        detailPresenter.execute(
+            request: DetailGameDomainRequest(
+                gameId: game.gameId
+            )
+        )
     }
 
     /// Get is favorite from core data.
@@ -28,11 +34,21 @@ struct DetailPage: View {
 //            coreGames: coreGames,
 //            game: game
 //        )
-        return true
+        return false
     }
 
     /// On click favorite button.
     private func onFavorite() {
+        setFavoritePresenter.execute(
+            request: FavoriteGameDomainRequest(
+                gameId: game.gameId,
+                name: game.name,
+                imageLocation: game.imageLocation,
+                rating: game.rating,
+                releaseDate: game.releaseDate,
+                isFavorite: true // TEMP
+            )
+        )
 //        handler.setIsFavorite(
 //            context: managedObjectContext,
 //            coreGames: coreGames,
