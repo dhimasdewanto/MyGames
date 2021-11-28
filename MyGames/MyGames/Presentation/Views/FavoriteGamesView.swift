@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FavoriteGames
 
 /// View for favorite games.
 struct FavoriteGamesView: View {

@@ -10,7 +10,6 @@ import CoreData
 import Games
 import DetailGame
 import Foundation
-import FavoriteGames
 import UIKit
 
 /// Injection class.
@@ -50,8 +49,8 @@ final class Injection: NSObject {
 
     func provideFavorite() -> GetFavoriteGamesPresenter {
         let localeSource = FavoriteGamesLocaleSource()
-        let mapper = FavoriteGameTransformer()
-        let repository = GetFavoriteGameRepository(
+        let mapper = GetFavoriteGamesTransfomer()
+        let repository = GetFavoriteGamesRepository(
             localeSource: localeSource,
             mapper: mapper
         )

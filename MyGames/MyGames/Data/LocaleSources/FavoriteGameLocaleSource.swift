@@ -1,16 +1,16 @@
 //
-//  SwiftUIView.swift
-//  
+//  FavoriteGameLocaleSource.swift
+//  MyGames
 //
-//  Created by Dhimas Dewanto on 25/11/21.
+//  Created by TMLI IT Dev on 28/11/21.
 //
 
 import Core
 import Combine
 import CoreData
 
-public class FavoriteGamesLocaleSource : LocaleDataSource {
-    
+public class FavoriteGamesLocaleSource: LocaleDataSource {
+
     private let managedObjectContext: NSManagedObjectContext
 
     public init(
@@ -22,11 +22,11 @@ public class FavoriteGamesLocaleSource : LocaleDataSource {
             self.managedObjectContext = PersistenceController.shared.container.viewContext
         }
     }
-    
+
     public typealias Request = Void
-    
+
     public typealias Response = FavoriteGameEntity
-    
+
     public func list(
         request: Void?
     ) -> AnyPublisher<[Response], Error> {
@@ -36,7 +36,7 @@ public class FavoriteGamesLocaleSource : LocaleDataSource {
             )
             let predicate = NSPredicate(format: "isFavorite == true")
             fetch.predicate = predicate
-            
+
             let listCoreData = PersistenceController.shared.getListData()
             let listData = CoreFavoriteTransformer().toEntities(
                 coreGames: listCoreData
@@ -44,7 +44,7 @@ public class FavoriteGamesLocaleSource : LocaleDataSource {
             completion(.success(listData))
         }.eraseToAnyPublisher()
     }
-    
+
     public func add(entities: [Response]) -> AnyPublisher<Void, Error> {
         return Future<Void, Error> { completion in
             for entity in entities {
@@ -54,7 +54,7 @@ public class FavoriteGamesLocaleSource : LocaleDataSource {
             completion(.success(()))
         }.eraseToAnyPublisher()
     }
-    
+
     public func get(coreId: String) -> AnyPublisher<Response, Error> {
         return Future<FavoriteGameEntity, Error> { completion in
             let listCoreData = PersistenceController.shared.getListData()
@@ -69,7 +69,7 @@ public class FavoriteGamesLocaleSource : LocaleDataSource {
             completion(.success(entity))
         }.eraseToAnyPublisher()
     }
-    
+
     /// Update game data in Core Data.
     ///
     /// If not exist, it will create instead.
@@ -91,8 +91,8 @@ public class FavoriteGamesLocaleSource : LocaleDataSource {
             completion(.success(()))
         }.eraseToAnyPublisher()
     }
-    
-    private func createCoreData(entity: Response) -> Void {
+
+    private func createCoreData(entity: Response) {
         let game = entity
         let coreGame = FavoriteCore(context: managedObjectContext)
         coreGame.gameId = game.gameId
@@ -102,5 +102,5 @@ public class FavoriteGamesLocaleSource : LocaleDataSource {
         coreGame.releaseDate = game.releaseDate
         coreGame.isFavorite = true
     }
-    
+
 }
