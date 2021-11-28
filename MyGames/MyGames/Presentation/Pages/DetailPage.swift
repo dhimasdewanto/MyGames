@@ -6,9 +6,9 @@
 //
 
 import DetailGame
-import FavoriteGames
 import SwiftUI
 import SDWebImageSwiftUI
+import Core
 
 /// Page to show detail game.
 struct DetailPage: View {
@@ -16,7 +16,16 @@ struct DetailPage: View {
 
     @EnvironmentObject var detailPresenter: DetailGamePresenter
     @EnvironmentObject var setFavoritePresenter: SetFavoriteGamePresenter
-    @EnvironmentObject var getFavoriteByIdPresenter: GetFavoriteGameByIdPresenter
+    @EnvironmentObject var getFavoriteByIdPresenter: GetFavoriteGameByIdPresenter<
+        Interactor<
+            String,
+            FavoriteGameDomainModel,
+            GetFavoriteGameByIdRepository<
+                FavoriteGamesLocaleSource,
+                GetFavoriteGameByIdTransformer
+            >
+        >
+    >
 
     /// Load detail data from API.
     private func loadData() {
@@ -27,13 +36,12 @@ struct DetailPage: View {
         )
     }
 
-    /// Get is favorite from core data.
-//    private func getIsFavorite() -> Bool {
-//        return handler.getIsFavorite(
-//            coreGames: coreGames,
-//            game: game
-//        )
-//    }
+    /// Load is favorite.
+    private func loadIsFavorite() {
+        getFavoriteByIdPresenter.execute(
+            request: game.gameId
+        )
+    }
 
     /// On click favorite button.
     private func onFavorite() {
@@ -43,10 +51,10 @@ struct DetailPage: View {
                 name: game.name,
                 imageLocation: game.imageLocation,
                 rating: game.rating,
-                releaseDate: game.releaseDate,
-                isFavorite: true // TEMP
+                releaseDate: game.releaseDate
             )
         )
+        loadIsFavorite()
     }
 
     var body: some View {
@@ -67,15 +75,15 @@ struct DetailPage: View {
             ToolbarItem {
                 HStack {
                     Text("") // To remove blue color.
-                    StateHandler<FavoriteGameDomainModel>(
+                    StateHandler<Bool>(
                         state: getFavoriteByIdPresenter.state,
-                        onLoad: loadData,
+                        onLoad: loadIsFavorite,
                         loadingView: AnyView(ProgressView()),
-                        successView: { state in
+                        successView: { isFavorite in
                             return AnyView(
                                 FavoriteButton(
                                     favorite: FavoriteItem(
-                                        isFavorite: state.isFavorite,
+                                        isFavorite: isFavorite,
                                         onFavorite: onFavorite,
                                         width: 30,
                                         height: 30

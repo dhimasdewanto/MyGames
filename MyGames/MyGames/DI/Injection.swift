@@ -69,7 +69,16 @@ final class Injection: NSObject {
         )
     }
 
-    func provideFavoriteById() -> GetFavoriteGameByIdPresenter {
+    func provideFavoriteById() -> GetFavoriteGameByIdPresenter<
+        Interactor<
+            String,
+            FavoriteGameDomainModel,
+            GetFavoriteGameByIdRepository<
+                FavoriteGamesLocaleSource,
+                GetFavoriteGameByIdTransformer
+            >
+        >
+    > {
         let localeSource = FavoriteGamesLocaleSource()
         let mapper = GetFavoriteGameByIdTransformer()
         let repository = GetFavoriteGameByIdRepository(

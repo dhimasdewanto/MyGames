@@ -32,16 +32,20 @@ public class FavoriteGamesLocaleSource: LocaleDataSource {
     ) -> AnyPublisher<[Response], Error> {
         return Future<[Response], Error> { completion in
             let fetch = NSFetchRequest<FavoriteCore>(
-                entityName: CoreDataConfigs.coreDataName
+                entityName: CoreDataConfigs.coreDataEntity
             )
             let predicate = NSPredicate(format: "isFavorite == true")
             fetch.predicate = predicate
 
-            let listCoreData = PersistenceController.shared.getListData()
-            let listData = CoreFavoriteTransformer().toEntities(
-                coreGames: listCoreData
-            )
-            completion(.success(listData))
+            do {
+                let listCoreData = try self.managedObjectContext.fetch(fetch)
+                let listData = CoreFavoriteTransformer().toEntities(
+                    coreGames: listCoreData
+                )
+                completion(.success(listData))
+            } catch {
+                completion(.failure(FavoriteGameError.failedToGetFavorites))
+            }
         }.eraseToAnyPublisher()
     }
 
@@ -85,7 +89,7 @@ public class FavoriteGamesLocaleSource: LocaleDataSource {
                 return
             }
 
-            coreData.isFavorite = entity.isFavorite
+            coreData.isFavorite = !coreData.isFavorite
             PersistenceController.shared.save()
 
             completion(.success(()))

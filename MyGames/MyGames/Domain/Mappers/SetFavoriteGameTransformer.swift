@@ -27,7 +27,7 @@ public struct SetFavoriteGameTransformer: Mapper {
                 imageLocation: data.imageLocation,
                 rating: data.rating,
                 releaseDate: data.releaseDate,
-                isFavorite: data.isFavorite
+                isFavorite: true
             )
         }
         return nil
@@ -40,8 +40,7 @@ public struct SetFavoriteGameTransformer: Mapper {
                 name: data.name,
                 imageLocation: data.imageLocation,
                 rating: data.rating,
-                releaseDate: data.releaseDate,
-                isFavorite: data.isFavorite
+                releaseDate: data.releaseDate
             )
         }
         return nil
