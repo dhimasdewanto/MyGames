@@ -9,11 +9,13 @@ import SwiftUI
 
 class ListGamesRouter {
   func toDetail(for game: GamePresentationModel) -> some View {
-      let detailGamePresenter = Injection.shared.provideDetailGame()
-      let setFavoriteGamePresenter = Injection.shared.provideSetFavorite()
+      let detailPresenter = Injection.shared.provideDetailGame()
+      let setFavoritePresenter = Injection.shared.provideSetFavorite()
+      let getFavoriteByIdPresenter = Injection.shared.provideFavoriteById()
 
       return DetailPage(game: game)
-          .environmentObject(detailGamePresenter)
-          .environmentObject(setFavoriteGamePresenter)
+          .environmentObject(detailPresenter)
+          .environmentObject(setFavoritePresenter)
+          .environmentObject(getFavoriteByIdPresenter)
   }
 }

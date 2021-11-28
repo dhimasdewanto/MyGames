@@ -14,10 +14,9 @@ import SDWebImageSwiftUI
 struct DetailPage: View {
     let game: GamePresentationModel
 
-//    private let handler = CatalogueHandler()
-
     @EnvironmentObject var detailPresenter: DetailGamePresenter
     @EnvironmentObject var setFavoritePresenter: SetFavoriteGamePresenter
+    @EnvironmentObject var getFavoriteByIdPresenter: GetFavoriteGameByIdPresenter
 
     /// Load detail data from API.
     private func loadData() {
@@ -29,13 +28,12 @@ struct DetailPage: View {
     }
 
     /// Get is favorite from core data.
-    private func getIsFavorite() -> Bool {
+//    private func getIsFavorite() -> Bool {
 //        return handler.getIsFavorite(
 //            coreGames: coreGames,
 //            game: game
 //        )
-        return false
-    }
+//    }
 
     /// On click favorite button.
     private func onFavorite() {
@@ -49,11 +47,6 @@ struct DetailPage: View {
                 isFavorite: true // TEMP
             )
         )
-//        handler.setIsFavorite(
-//            context: managedObjectContext,
-//            coreGames: coreGames,
-//            game: game
-//        )
     }
 
     var body: some View {
@@ -74,13 +67,22 @@ struct DetailPage: View {
             ToolbarItem {
                 HStack {
                     Text("") // To remove blue color.
-                    FavoriteButton(
-                        favorite: FavoriteItem(
-                            isFavorite: getIsFavorite(),
-                            onFavorite: onFavorite,
-                            width: 30,
-                            height: 30
-                        )
+                    StateHandler<FavoriteGameDomainModel>(
+                        state: getFavoriteByIdPresenter.state,
+                        onLoad: loadData,
+                        loadingView: AnyView(ProgressView()),
+                        successView: { state in
+                            return AnyView(
+                                FavoriteButton(
+                                    favorite: FavoriteItem(
+                                        isFavorite: state.isFavorite,
+                                        onFavorite: onFavorite,
+                                        width: 30,
+                                        height: 30
+                                    )
+                                )
+                            )
+                        }
                     )
                 }
             }

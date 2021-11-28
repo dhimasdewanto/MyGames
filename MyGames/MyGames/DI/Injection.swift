@@ -17,10 +17,6 @@ final class Injection: NSObject {
     /// Singleton of [Injection].
     static let shared = Injection.init()
 
-    private func managedObjectContext() -> NSManagedObjectContext {
-        return PersistenceController.shared.container.viewContext
-    }
-
     func provideGames() -> GamePresenter {
         let remote = GameRemoteSource()
         let mapper = GameTransformer()
@@ -61,9 +57,7 @@ final class Injection: NSObject {
     }
 
     func provideSetFavorite() -> SetFavoriteGamePresenter {
-        let localeSource = FavoriteGamesLocaleSource(
-            managedObjectContext: self.managedObjectContext()
-        )
+        let localeSource = FavoriteGamesLocaleSource()
         let mapper = SetFavoriteGameTransformer()
         let repository = SetFavoriteGameRepository(
             localeSource: localeSource,
@@ -71,6 +65,19 @@ final class Injection: NSObject {
         )
         let useCase = Interactor(repository: repository)
         return SetFavoriteGamePresenter(
+            useCase: useCase
+        )
+    }
+
+    func provideFavoriteById() -> GetFavoriteGameByIdPresenter {
+        let localeSource = FavoriteGamesLocaleSource()
+        let mapper = GetFavoriteGameByIdTransformer()
+        let repository = GetFavoriteGameByIdRepository(
+            localeSource: localeSource,
+            mapper: mapper
+        )
+        let useCase = Interactor(repository: repository)
+        return GetFavoriteGameByIdPresenter(
             useCase: useCase
         )
     }
