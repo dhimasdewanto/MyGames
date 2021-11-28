@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E900B30E274AB2FF005D780F /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900B30D274AB2FF005D780F /* Injection.swift */; };
-		E92D4EC5274EEE8100E9C310 /* FavoriteGames in Frameworks */ = {isa = PBXBuildFile; productRef = E92D4EC4274EEE8100E9C310 /* FavoriteGames */; };
 		E945ED70274A4ECA006C438B /* Games in Frameworks */ = {isa = PBXBuildFile; productRef = E945ED6F274A4ECA006C438B /* Games */; };
 		E949F5B2274BCC5F00ACB02A /* DetailGame in Frameworks */ = {isa = PBXBuildFile; productRef = E949F5B1274BCC5F00ACB02A /* DetailGame */; };
 		E949F5B4274C60BF00ACB02A /* DetailGameComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E949F5B3274C60BF00ACB02A /* DetailGameComponent.swift */; };
@@ -52,7 +51,6 @@
 
 /* Begin PBXFileReference section */
 		E900B30D274AB2FF005D780F /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
-		E92D4EC3274EEE6A00E9C310 /* FavoriteGames */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FavoriteGames; path = ../Modules/FavoriteGames; sourceTree = "<group>"; };
 		E945ED68274A2538006C438B /* Core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Core; path = ../Modules/Core; sourceTree = "<group>"; };
 		E945ED69274A2C05006C438B /* Games */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Games; path = ../Modules/Games; sourceTree = "<group>"; };
 		E949F5B0274BCC5000ACB02A /* DetailGame */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DetailGame; path = ../Modules/DetailGame; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 				E945ED70274A4ECA006C438B /* Games in Frameworks */,
 				E9E32343274961F4009CCC10 /* SDWebImageSwiftUI in Frameworks */,
 				E94DCA17274A4F0D0080F23E /* Core in Frameworks */,
-				E92D4EC5274EEE8100E9C310 /* FavoriteGames in Frameworks */,
 				E949F5B2274BCC5F00ACB02A /* DetailGame in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,7 +283,6 @@
 		E9E322982749556D009CCC10 = {
 			isa = PBXGroup;
 			children = (
-				E92D4EC3274EEE6A00E9C310 /* FavoriteGames */,
 				E949F5B0274BCC5000ACB02A /* DetailGame */,
 				E945ED69274A2C05006C438B /* Games */,
 				E945ED68274A2538006C438B /* Core */,
@@ -371,7 +367,6 @@
 				E945ED6F274A4ECA006C438B /* Games */,
 				E94DCA16274A4F0D0080F23E /* Core */,
 				E949F5B1274BCC5F00ACB02A /* DetailGame */,
-				E92D4EC4274EEE8100E9C310 /* FavoriteGames */,
 			);
 			productName = MyGames;
 			productReference = E9E322A12749556D009CCC10 /* MyGames.app */;
@@ -700,10 +695,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E92D4EC4274EEE8100E9C310 /* FavoriteGames */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FavoriteGames;
-		};
 		E945ED6F274A4ECA006C438B /* Games */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Games;
