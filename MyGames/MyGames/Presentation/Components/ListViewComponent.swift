@@ -10,34 +10,6 @@ import SwiftUI
 /// Component for list view of [GameItem].
 struct ListViewComponent: View {
     let listGames: [GamePresentationModel]
-//    private let handler = CatalogueHandler()
-//
-//    @Environment(\.managedObjectContext) var managedObjectContext
-//    @FetchRequest(
-//        entity: CoreGame.entity(),
-//        sortDescriptors: [
-//            NSSortDescriptor(
-//                keyPath: \CoreGame.gameId,
-//                ascending: true
-//            )
-//        ]
-//    ) var coreGames: FetchedResults<CoreGame>
-
-    private func onFavorite(game: GamePresentationModel) {
-//        handler.setIsFavorite(
-//            context: managedObjectContext,
-//            coreGames: coreGames,
-//            game: game
-//        )
-    }
-
-    private func getIsFavorite(game: GamePresentationModel) -> Bool {
-        return false
-//        return handler.getIsFavorite(
-//            coreGames: coreGames,
-//            game: game
-//        )
-    }
 
     private func toDetailNavigation<Content: View>(
         game: GamePresentationModel,
@@ -57,13 +29,7 @@ struct ListViewComponent: View {
                     toDetailNavigation(game: game) {
                         ListTileComponent(
                             game: game,
-                            ranking: index + 1,
-                            favorite: FavoriteItem(
-                                isFavorite: getIsFavorite(game: game),
-                                onFavorite: {
-                                    onFavorite(game: game)
-                                }
-                            )
+                            ranking: index + 1
                         )
                     }
                 }

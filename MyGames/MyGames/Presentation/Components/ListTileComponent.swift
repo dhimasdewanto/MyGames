@@ -12,7 +12,6 @@ import SDWebImageSwiftUI
 struct ListTileComponent: View {
     var game: GamePresentationModel
     var ranking: Int?
-    var favorite: FavoriteItem
 
     private func readDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
@@ -75,10 +74,6 @@ struct ListTileComponent: View {
             }
 
             Spacer()
-
-            FavoriteButton(
-                favorite: favorite
-            )
         }
         .padding()
     }
