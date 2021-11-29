@@ -15,6 +15,7 @@ struct DetailPage: View {
     let game: GamePresentationModel
 
     @EnvironmentObject var detailPresenter: DetailGamePresenter
+    @EnvironmentObject var favoritePresenter: GetFavoriteGamesPresenter
     @EnvironmentObject var setFavoritePresenter: SetFavoriteGamePresenter
     @EnvironmentObject var getFavoriteByIdPresenter: GetFavoriteGameByIdPresenter<
         Interactor<
@@ -40,6 +41,9 @@ struct DetailPage: View {
     private func loadIsFavorite() {
         getFavoriteByIdPresenter.execute(
             request: game.gameId
+        )
+        favoritePresenter.execute(
+            request: nil
         )
     }
 

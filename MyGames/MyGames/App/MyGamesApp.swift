@@ -10,8 +10,11 @@ import SwiftUI
 @main
 struct MyGamesApp: App {
     var body: some Scene {
+        let favoritePresenter = Injection.shared.provideFavorite()
+
         WindowGroup {
             HomePage()
+                .environmentObject(favoritePresenter)
         }
     }
 }

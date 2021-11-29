@@ -13,7 +13,6 @@ import Games
 struct HomePage: View {
     var body: some View {
         let gamePresenter = Injection.shared.provideGames()
-        let favoritePresenter = Injection.shared.provideFavorite()
 
         TabView {
             NavigationView {
@@ -38,7 +37,6 @@ struct HomePage: View {
 
             NavigationView {
                 FavoriteGamesView()
-                    .environmentObject(favoritePresenter)
             }
             .tabItem {
                 Image(
